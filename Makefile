@@ -5,7 +5,8 @@ run:
 
 all:
 	rm -rf *.love
-	zip eggdrop.love *
+	zip eggdrop.love *.lua sprites
 
 clean:
-	rm -rf *.love
+	rm -rf *.love *~
+
