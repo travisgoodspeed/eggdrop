@@ -13,14 +13,11 @@ function love.load()
    love.window.setMode(1024,768)
 
    --Initialize the physics engine and callbacks.
-   world = love.physics.newWorld(0, 200, true);
+   love.physics.setMeter(64); -- 64 pixels == 1 meter
+   world = love.physics.newWorld(0, 9.81*64, true);
    world:setCallbacks(beginContact, endContact, preSolve, postSolve)
 
    persisting=0
-   
-   -- This is the height and the width of the platform.
-   platform.width = love.graphics.getWidth()    -- This makes the platform as wide as the whole game window.
-   platform.height = love.graphics.getHeight()  -- This makes the platform as tall as the whole game window.
    
    -- This is the coordinates where the penguin character will be rendered.
    penguin.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
@@ -38,11 +35,6 @@ function love.load()
    
    -- This calls the defualt sprite and puts it in the variable called penguin.img.
    penguin.img = love.graphics.newImage('sprites/penguin/standin.png')
-   penguin.speed = 200
-   penguin.ground = penguin.y     -- This makes the character land on the plaform.
-   penguin.y_velocity = 0        -- Whenever the character hasn't jumped yet, the Y-Axis velocity is always at 0.
-   penguin.jump_height = -300    -- Whenever the character jumps, he can reach this height.
-   penguin.gravity = -500        -- Whenever the character falls, he will descend at this rate.
 end
 
 function beginContact(a, b, coll)
@@ -81,7 +73,14 @@ function love.update(dt)
 
    --Jump
    if love.keyboard.isDown('space') then
-      penguin.b:applyForce(0,-5000);
+      --penguin.b:applyForce(0,-5000);
+      dx, dy = penguin.b:getLinearVelocity();
+
+      --FIXME: This is a poor check for being on the ground.
+      --Maybe use the collection vector instead?
+      if dy>-1 and dy<1 then
+	 penguin.b:setLinearVelocity(dx,-500);
+      end
    end
 
 end
