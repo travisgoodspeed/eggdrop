@@ -7,11 +7,16 @@
 require("draw")     --Draws the scene.
 require("physics")  --Manages the physics engine.
 require("level")    --Game level.
+require("cheats")    --Cheat codes.
 
 --Global variables
 
 penguin = {}
+egg = {}
+farback = {}
 bg = {} --Level background, not farback.
+
+cheats={}
 
 function love.load()
    love.window.setMode(1024,768)
@@ -26,17 +31,31 @@ function love.load()
    -- This is the coordinates where the penguin character will be rendered.
    penguin.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
    penguin.b:setMass(10)                                        -- make it pretty light
-   penguin.s = love.physics.newRectangleShape(64,64)                  -- give it a radius of 50
+   penguin.s = love.physics.newRectangleShape(48,48)            -- Not quite the full size of the sprite.
    penguin.f = love.physics.newFixture(penguin.b, penguin.s)    -- connect body to shape
    penguin.f:setRestitution(0.4)                                -- make it bouncy
    penguin.f:setUserData("Penguin")
+   penguin.img = love.graphics.newImage('sprites/penguin/right/idle/01.png')
 
+   
+   -- This is the coordinates where the egg character will be rendered.
+   egg.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
+   egg.b:setMass(10)                                        -- make it pretty light
+   egg.s = love.physics.newRectangleShape(32,32)            -- Not quite the full size of the sprite.
+   egg.f = love.physics.newFixture(egg.b, egg.s)            -- connect body to shape
+   egg.f:setRestitution(0.4)                                -- make it bouncy
+   egg.f:setUserData("Egg")
+   egg.attached=1;
+   egg.img = love.graphics.newImage('sprites/penguin/Egg.png')
 
    init_level();
    
-   -- This calls the defualt sprite and puts it in the variable called penguin.img.
-   penguin.img = love.graphics.newImage('sprites/penguin/standin.png')
+   -- This calls the default sprite and puts it in the variable called penguin.img.
+   
+   
+   
 
+   cheats_off();
 end
 
 
@@ -57,10 +76,13 @@ function love.update(dt)
 
       --FIXME: This is a poor check for being on the ground.
       --Maybe use the collection vector instead?
-      if dy>-1 and dy<1 then
+      if (dy>-1 and dy<1) or cheats.alwaysjump==1 then
 	 penguin.b:setLinearVelocity(dx,-500);
       end
    end
 
+   test_cheats();
 end
+
+
 

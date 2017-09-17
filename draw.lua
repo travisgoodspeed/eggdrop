@@ -1,18 +1,22 @@
 function love.draw()
-   love.graphics.setColor(255, 255, 255)        -- This sets the platform color to white. (The parameters are in RGB Color format).
-   
-   -- The platform will now be drawn as a white rectangle while taking in the variables we declared above.
-   --love.graphics.rectangle('fill', platform.x, platform.y, platform.width, platform.height)
+   -- Draw the far background first.
+   love.graphics.draw(farback.img, 0, 0, 0, 1, 1, 0, 0)
 
-   -- Draw the background first.
+   -- Draw the background next.
    love.graphics.draw(bg.img, 0, 0, 0, 1, 1, 0, 0)
 
    -- This draws the penguin.
    love.graphics.draw(penguin.img, penguin.b:getX(), penguin.b:getY(), 0, 1, 1, 32, 32)
-
+   love.graphics.draw(egg.img, egg.b:getX(), egg.b:getY(), egg.b:getAngle(), 1, 1, 16, 16)
+   if cheats.boundingboxes==1 then
+      love.graphics.setColor(0, 0, 0)
+      love.graphics.polygon("line", penguin.b:getWorldPoints(penguin.s:getPoints()))
+      love.graphics.polygon("line", egg.b:getWorldPoints(egg.s:getPoints()))
+   end
+   
    -- Draw the block.
    --love.graphics.polygon("line", platform.b:getWorldPoints(platform.s:getPoints()))
 
-
+   love.graphics.setColor(255, 255, 255)
 end
 
