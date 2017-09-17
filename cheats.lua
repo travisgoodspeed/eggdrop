@@ -3,7 +3,8 @@
 -- 1. Show collision boxes.
 -- 2. Always jump.
 -- 3. Grab the egg.
--- 4. Restore the egg.
+-- 4. Score a goal.
+-- 5. Release a goal.
 
 -- Disable all cheat codes.
 function cheats_off()
@@ -21,10 +22,13 @@ function test_cheats()
       cheats.alwaysjump=1;
    end
    if love.keyboard.isDown('3') then
-      egg.b:setActive(false);
+      egg.grab=true;
    end
    if love.keyboard.isDown('4') then
-      egg.b:setActive(true);
+      goal.scoring=true;
+   end
+   if love.keyboard.isDown('5') then
+      goal.scoring=false;
    end
    
    

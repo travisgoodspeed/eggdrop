@@ -36,7 +36,7 @@ function love.load()
 
    
    -- This is the coordinates where the penguin character will be rendered.
-   penguin.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
+   penguin.b = love.physics.newBody(world, 400,200, "dynamic")
    penguin.b:setMass(10)                                        -- make it pretty light
    penguin.s = love.physics.newRectangleShape(48,48)            -- Not quite the full size of the sprite.
    penguin.f = love.physics.newFixture(penguin.b, penguin.s)    -- connect body to shape
@@ -93,6 +93,10 @@ function love.update(dt)
       end
    end
 
+   --Scoring a goal
+   if goal.scoring then
+      egg.b:setActive(false);
+   end
 
    --Hold shift to grab the egg, release shift to drop the egg.
    if love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift') then
@@ -101,7 +105,7 @@ function love.update(dt)
 	 egg.b:setActive(false);
 	 egg.grab=false
       end
-   elseif not egg.b:isActive() then
+   elseif not egg.b:isActive() and not goal.scoring then
       --Release egg.
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();

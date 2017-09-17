@@ -12,6 +12,13 @@ function beginContact(a, b, coll)
    if ((astr=="Egg" and bstr=="Penguin") or (astr=="Penguin" and bstr=="Egg")) and (love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')) then
       egg.grab=true;
    end
+
+   --Score a goal
+   if (astr=="Egg" and bstr=="Goal") or (astr=="Goal" and bstr=="Egg") then
+      goal.scoring=true;
+   end
+
+   
 end
  
 function endContact(a, b, coll)
