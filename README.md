@@ -24,6 +24,12 @@ similar; we definitely won't work with 0.8.
 After compiling, the file `eggdrop.love` is a self-contained game
 bundle that will run with Löve2d on all platforms.
 
+## Prebuilt Download
+
+You can download a prebuilt
+[eggdrop.love](prebuild/eggdrop.love?raw=true).  Be sure to also have
+the [LÖVE Game Engine](https://love2d.org/).
+
 ## Controls
 
 ```
@@ -32,8 +38,12 @@ A      -- Left
 S
 D      -- Right
 SPACE  -- Jump
-LSHIFT -- Hold to grab the egg.
+SHIFT  -- Hold to grab the egg.
 ```
+
+`A` and `D` move left and right, with the spacebar jumping.  You need
+to hold the shift button to catch the egg, and releasing the shift
+button will throw the egg.
 
 ## Cheat Codes
 
@@ -42,5 +52,7 @@ LSHIFT -- Hold to grab the egg.
 1. Display bounding boxes of the Penguin and Egg.
 2. Unlimited jump.  (Fly mode.)
 3. Grab the egg.
-4. Release the egg.
+4. Score a goal.
+5. Release a goal.
 ```
+
