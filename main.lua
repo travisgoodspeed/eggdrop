@@ -19,11 +19,20 @@ farback = {}
 bg = {} --Level background, not farback.
 fg = {} --Foreground.
 cheats={}
+sounds={}
 score = 0 -- Whose line is it anyways?
 
 function love.load()
    love.window.setMode(1024,768)
-   
+   love.window.setTitle("Egg Drop");
+
+   -- Background music.
+   music = love.audio.newSource("music/title.mp3")
+   music:setLooping(true);
+   music:play();
+
+   -- Sound effects.
+   sounds.throw = love.audio.newSource("sounds/throw.wav", "static")
 
    --Initialize the physics engine and callbacks.
    love.physics.setMeter(64); -- 64 pixels == 1 meter
@@ -115,6 +124,8 @@ function love.update(dt)
 	 egg.grab=false
       end
    elseif not egg.b:isActive() and not goal.scoring  then
+      --Play the sound.
+      sounds.throw:play();
       --Release egg.
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();

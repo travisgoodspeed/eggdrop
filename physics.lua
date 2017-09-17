@@ -36,6 +36,9 @@ end
 
 --Serves the egg from the goal.
 function serve_egg()
+   --Play the sound.
+   sounds.throw:play();
+   
    x, y   = goal.b:getPosition();
    --Egg comes from goal position, but outside of block.
    if goal.dir=="left" then
