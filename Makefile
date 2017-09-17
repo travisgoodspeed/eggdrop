@@ -41,3 +41,13 @@ graphics:
 	convert -flop sprites/penguin/right/walk/07.png sprites/penguin/left/walk/07.png
 	convert -flop sprites/penguin/right/walk/08.png sprites/penguin/left/walk/08.png
 	convert -flop sprites/penguin/right/walk/09.png sprites/penguin/left/walk/09.png
+	mkdir -p sprites/penguinegg/left/walk
+	convert -flop sprites/penguinegg/right/walk/01.png sprites/penguinegg/left/walk/01.png
+	convert -flop sprites/penguinegg/right/walk/02.png sprites/penguinegg/left/walk/02.png
+	convert -flop sprites/penguinegg/right/walk/03.png sprites/penguinegg/left/walk/03.png
+	convert -flop sprites/penguinegg/right/walk/04.png sprites/penguinegg/left/walk/04.png
+	convert -flop sprites/penguinegg/right/walk/05.png sprites/penguinegg/left/walk/05.png
+	convert -flop sprites/penguinegg/right/walk/06.png sprites/penguinegg/left/walk/06.png
+	convert -flop sprites/penguinegg/right/walk/07.png sprites/penguinegg/left/walk/07.png
+	convert -flop sprites/penguinegg/right/walk/08.png sprites/penguinegg/left/walk/08.png
+	convert -flop sprites/penguinegg/right/walk/09.png sprites/penguinegg/left/walk/09.png
