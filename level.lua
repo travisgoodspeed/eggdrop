@@ -1,6 +1,13 @@
 
 function init_level()
    create_edge_walls(1024,768);
+
+   --Load the background image and create blocks.
+   bg.img=love.graphics.newImage('levels/00/bg.png');
+   newblock(336,246, 537,283, "Block");
+   newblock(639,357, 848,387, "Block");
+   newblock(376,415, 937,448, "Block");
+   newblock( 50,566, 530,603, "Block");
 end
 
 

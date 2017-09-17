@@ -9,9 +9,10 @@ require("physics")  --Manages the physics engine.
 require("level")    --Game level.
 
 --Global variables
-platform = {}
+
 penguin = {}
- 
+bg = {} --Level background, not farback.
+
 function love.load()
    love.window.setMode(1024,768)
 
@@ -30,17 +31,12 @@ function love.load()
    penguin.f:setRestitution(0.4)                                -- make it bouncy
    penguin.f:setUserData("Penguin")
 
-   --Static platform; we'll need more than one of these.
-   platform.b = love.physics.newBody(world, 400,400, "static") -- "static" makes it not move
-   platform.s = love.physics.newRectangleShape(200,50)         -- set size to 200,50 (x,y)
-   platform.f = love.physics.newFixture(platform.b, platform.s)
-   platform.f:setUserData("Ground")
-
 
    init_level();
    
    -- This calls the defualt sprite and puts it in the variable called penguin.img.
    penguin.img = love.graphics.newImage('sprites/penguin/standin.png')
+
 end
 
 
