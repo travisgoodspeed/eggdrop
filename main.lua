@@ -53,9 +53,9 @@ function love.load()
    egg.f = love.physics.newFixture(egg.b, egg.s)            -- connect body to shape
    egg.f:setRestitution(0.8)                                -- make it very bouncy
    egg.f:setUserData("Egg")
-   egg.img = love.graphics.newImage('sprites/penguin/Egg.png')
+   egg.img = love.graphics.newImage('sprites/egg/01.png')
 
-   --Penguin initially has no egg.
+   --Sets the penguin sprites.
    update_penguinsprite();
 end
 
@@ -84,6 +84,21 @@ function love.update(dt)
       end
    end
 
+
+   if love.keyboard.isDown('lshift') then
+      if egg.grab then
+	 egg.b:setActive(false);
+	 egg.grab=false
+      end
+   elseif not egg.b:isActive() then
+      x=30;
+      y=40;
+      egg.b:setPosition(x,y);
+      egg.b:setActive(true);
+      egg.grab=false;
+   end
+   
+   
    test_cheats();
 end
 

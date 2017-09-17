@@ -4,6 +4,14 @@
 function beginContact(a, b, coll)
    x,y = coll:getNormal()
    print(a:getUserData().." colliding with "..b:getUserData().." with a vector normal of: "..x..", "..y);
+
+   astr=a:getUserData();
+   bstr=b:getUserData();
+   
+   --Capture the egg if shift is held on a collision.
+   if ((astr=="Egg" and bstr=="Penguin") or (astr=="Penguin" and bstr=="Egg")) and love.keyboard.isDown('lshift') then
+      egg.grab=true;
+   end
 end
  
 function endContact(a, b, coll)
