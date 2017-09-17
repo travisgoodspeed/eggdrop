@@ -6,17 +6,18 @@
 --This is how other modules are included.
 require("draw")     --Draws the scene.
 require("physics")  --Manages the physics engine.
-require("level")    --Game level.
+require("level01")  --Game level.
 require("cheats")   --Cheat codes.
-require("sprites")   --Sprite images.
+require("sprites")  --Sprite images.
 
 --Global variables
 
-penguin = {}
-egg = {}
+penguin = {} -- Player 1.
+egg = {}     -- The egg.
+goal = {}    -- Receiving penguin.
 farback = {}
 bg = {} --Level background, not farback.
-
+fg = {} --Foreground.
 cheats={}
 
 function love.load()
@@ -28,8 +29,6 @@ function love.load()
    world = love.physics.newWorld(0, 9.81*64, true);
    world:setCallbacks(beginContact, endContact, preSolve, postSolve);
 
-   persisting=0;
-
    --Global initializers.
    init_level();
    sprites_init();
@@ -37,7 +36,7 @@ function love.load()
 
    
    -- This is the coordinates where the penguin character will be rendered.
-   penguin.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
+   penguin.b = love.physics.newBody(world, 400,200, "dynamic")
    penguin.b:setMass(10)                                        -- make it pretty light
    penguin.s = love.physics.newRectangleShape(48,48)            -- Not quite the full size of the sprite.
    penguin.f = love.physics.newFixture(penguin.b, penguin.s)    -- connect body to shape
@@ -45,9 +44,19 @@ function love.load()
    penguin.f:setUserData("Penguin")
    penguin.dir="left";
 
+   -- This is the coordinates where the goal penguin will be rendered.
+   goal.b = love.physics.newBody(world, 800,10, "dynamic")
+   goal.b:setMass(1000)                                      -- make it heavy
+   goal.s = love.physics.newRectangleShape(48,48)            -- Not quite the full size of the sprite.
+   goal.f = love.physics.newFixture(goal.b, goal.s)          -- connect body to shape
+   goal.f:setRestitution(0.2)                                -- a little bouncy
+   goal.f:setUserData("Goal")
+   goal.dir="left";
+   goal.scoring=false;
+
    
    -- This is the coordinates where the egg character will be rendered.
-   egg.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
+   egg.b = love.physics.newBody(world, 400,200, "dynamic")
    egg.b:setMass(10)                                        -- make it pretty light
    egg.s = love.physics.newRectangleShape(32,32)            -- Not quite the full size of the sprite.
    egg.f = love.physics.newFixture(egg.b, egg.s)            -- connect body to shape
@@ -84,20 +93,26 @@ function love.update(dt)
       end
    end
 
+   --Scoring a goal
+   if goal.scoring then
+      egg.b:setActive(false);
+   end
 
    --Hold shift to grab the egg, release shift to drop the egg.
-   if love.keyboard.isDown('lshift') then
+   if love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift') then
       if egg.grab then
 	 --Capture egg.
 	 egg.b:setActive(false);
 	 egg.grab=false
       end
-   elseif not egg.b:isActive() then
+   elseif not egg.b:isActive() and not goal.scoring then
       --Release egg.
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();
+      --Egg comes from our position.
       egg.b:setPosition(x,y);
-      egg.b:setLinearVelocity(xv*2,yv*2);
+      --Egg has twice our X velocity, fixed upward velocity.
+      egg.b:setLinearVelocity(xv*2,-450);
       egg.b:setActive(true);
       egg.grab=false;
    end
