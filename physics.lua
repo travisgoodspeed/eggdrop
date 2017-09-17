@@ -15,17 +15,11 @@ function beginContact(a, b, coll)
 end
  
 function endContact(a, b, coll)
-   persisting=0; --No longer touching
    print(a:getUserData().." uncolliding with "..b:getUserData());
 end
  
 function preSolve(a, b, coll)
-   if persisting == 0 then    -- only say when they first start touching
-      print(a:getUserData().." touching "..b:getUserData())
-   elseif persisting < 20 then    -- then just start counting
-      print(persisting)
-   end
-   persisting = persisting + 1 
+   
 end
  
 function postSolve(a, b, coll, normalimpulse, tangentimpulse)

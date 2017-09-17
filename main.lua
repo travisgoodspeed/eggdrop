@@ -29,8 +29,6 @@ function love.load()
    world = love.physics.newWorld(0, 9.81*64, true);
    world:setCallbacks(beginContact, endContact, preSolve, postSolve);
 
-   persisting=0;
-
    --Global initializers.
    init_level();
    sprites_init();
@@ -98,7 +96,7 @@ function love.update(dt)
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();
       egg.b:setPosition(x,y);
-      egg.b:setLinearVelocity(xv*2,yv*2);
+      egg.b:setLinearVelocity(xv*2,-300);
       egg.b:setActive(true);
       egg.grab=false;
    end
