@@ -83,6 +83,13 @@ function love.update(dt)
       penguin.dir="left";
    end
 
+   --Left/right for the goal.
+   if penguin.b:getX()<goal.b:getX() then
+      goal.dir="left";
+   else
+      goal.dir="right";
+   end
+
    --Jump
    if love.keyboard.isDown('space') then
       --penguin.b:applyForce(0,-5000);

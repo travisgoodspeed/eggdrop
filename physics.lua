@@ -1,5 +1,4 @@
---- Phyics functions for EggDrop.
-
+--- Physics functions for EggDrop.
 
 function beginContact(a, b, coll)
    x,y = coll:getNormal()
@@ -38,10 +37,14 @@ end
 --Serves the egg from the goal.
 function serve_egg()
    x, y   = goal.b:getPosition();
-   --Egg comes from our position.
-   egg.b:setPosition(x-35,y-20);
-   --Egg has twice our X velocity, fixed upward velocity.
-   egg.b:setLinearVelocity(-800,-450);
+   --Egg comes from goal position, but outside of block.
+   if goal.dir=="left" then
+      egg.b:setPosition(x-35,y-20);
+      egg.b:setLinearVelocity(-800,-450);
+   else
+      egg.b:setPosition(x+35,y-20);
+      egg.b:setLinearVelocity(800,-450);
+   end
    egg.b:setActive(true);
    egg.grab=false;
    goal.scoring=false;
