@@ -1,22 +1,42 @@
+
+function update_penguinsprite()
+   if egg.b:isActive() then
+      penguin.sprite=penguinnoeggsprite
+   else
+      penguin.sprite=penguineggsprite
+   end
+
+   print("Drawing penguin: "..penguin.dir);
+   penguin.img = penguin.sprite[penguin.dir].idle[1];
+end
+
+
+
 function love.draw()
+   --Update the sprites before rendering.
+   update_penguinsprite();
+   
    -- Draw the far background first.
    love.graphics.draw(farback.img, 0, 0, 0, 1, 1, 0, 0)
 
    -- Draw the background next.
    love.graphics.draw(bg.img, 0, 0, 0, 1, 1, 0, 0)
 
-   -- This draws the penguin.
+   -- Draw the egg.
+   if egg.b:isActive() then
+      love.graphics.draw(egg.img, egg.b:getX(), egg.b:getY(), egg.b:getAngle(), 1, 1, 16, 16)
+   end
+   --Draw the penguin.
    love.graphics.draw(penguin.img, penguin.b:getX(), penguin.b:getY(), 0, 1, 1, 32, 32)
-   love.graphics.draw(egg.img, egg.b:getX(), egg.b:getY(), egg.b:getAngle(), 1, 1, 16, 16)
+   
    if cheats.boundingboxes==1 then
       love.graphics.setColor(0, 0, 0)
       love.graphics.polygon("line", penguin.b:getWorldPoints(penguin.s:getPoints()))
-      love.graphics.polygon("line", egg.b:getWorldPoints(egg.s:getPoints()))
+      if egg.b:isActive() then
+	 love.graphics.polygon("line", egg.b:getWorldPoints(egg.s:getPoints()))
+      end
    end
    
-   -- Draw the block.
-   --love.graphics.polygon("line", platform.b:getWorldPoints(platform.s:getPoints()))
-
    love.graphics.setColor(255, 255, 255)
 end
 

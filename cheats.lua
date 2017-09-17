@@ -2,6 +2,8 @@
 -- 0. Disable all codes.
 -- 1. Show collision boxes.
 -- 2. Always jump.
+-- 3. Grab the egg.
+-- 4. Restore the egg.
 
 -- Disable all cheat codes.
 function cheats_off()
@@ -18,10 +20,15 @@ function test_cheats()
    if love.keyboard.isDown('2') then
       cheats.alwaysjump=1;
    end
+   if love.keyboard.isDown('3') then
+      egg.b:setActive(false);
+   end
+   if love.keyboard.isDown('4') then
+      egg.b:setActive(true);
+   end
+   
    
    if love.keyboard.isDown('0') then
       cheats_off();
    end
-
-   
 end
