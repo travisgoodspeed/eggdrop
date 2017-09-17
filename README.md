@@ -3,11 +3,11 @@
 EggDrop is our working title for quick physics-simulated basketball
 game written at a Philly Game Mechanics Jam on the 16th and 17th of
 September, 2017 for the Löve2d game engine, version 0.10.2.  It was
-written by Spencer Edgers, Travis Goodspeed, Hannibal, and Erik Van
-Horn.
+written by Spencer Edgers, Travis Goodspeed, Hannibal Collins, and
+Erik Van Horn.
 
-Penguin Pete has an egg that will soon hatch, but he needs to keep it
-warm and get it to a better caretaker than himself.
+Pin-Pin the Peguin has an egg that will soon hatch, but he needs to
+keep it warm and get it to a better caretaker than himself.
 
 ## Screenshots
 
@@ -18,8 +18,8 @@ warm and get it to a better caretaker than himself.
 ## Building
 
 The game compiles on Linux or OS X by running `make clean all` or
-previews by running `make clean run`.  You will need at least Löve2d
-verison 0.9.0, but we've only tested with 0.10.2.
+previews by running `make clean run`.  You will need Löve2d 0.10.2 or
+similar; we definitely won't work with 0.8.
 
 After compiling, the file `eggdrop.love` is a self-contained game
 bundle that will run with Löve2d on all platforms.
