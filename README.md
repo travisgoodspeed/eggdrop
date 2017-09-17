@@ -27,7 +27,7 @@ bundle that will run with Löve2d on all platforms.
 ## Prebuilt Download
 
 You can download a prebuilt
-[eggdrop.love](prebuild/eggdrop.love?raw=true).  Be sure to also have
+[eggdrop.love](prebuilt/eggdrop.love?raw=true).  Be sure to also have
 the [LÖVE Game Engine](https://love2d.org/).
 
 ## Controls
