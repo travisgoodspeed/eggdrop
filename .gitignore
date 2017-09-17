@@ -2,6 +2,7 @@
 #Image previews.
 .DS_Store
 .directory
+*~
 
 # Compiled Lua sources
 luac.out

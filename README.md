@@ -2,7 +2,12 @@
 
 EggDrop is our working title for quick physics-simulated basketball
 game written at a Philly Game Mechanics Jam on the 16th and 17th of
-September, 2017 for the Löve2d game engine, version 0.10.2.
+September, 2017 for the Löve2d game engine, version 0.10.2.  It was
+written by Spencer Edgers, Travis Goodspeed, Hannibal, and Erik Van
+Horn.
+
+Penguin Pete has an egg that will soon hatch, but he needs to keep it
+warm and get it to a better caretaker than himself.
 
 ## Screenshots
 

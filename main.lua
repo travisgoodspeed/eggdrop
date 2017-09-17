@@ -6,9 +6,9 @@
 --This is how other modules are included.
 require("draw")     --Draws the scene.
 require("physics")  --Manages the physics engine.
-require("level")    --Game level.
+require("level01")  --Game level.
 require("cheats")   --Cheat codes.
-require("sprites")   --Sprite images.
+require("sprites")  --Sprite images.
 
 --Global variables
 
