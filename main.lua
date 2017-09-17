@@ -19,6 +19,7 @@ farback = {}
 bg = {} --Level background, not farback.
 fg = {} --Foreground.
 cheats={}
+score = 0 -- Whose line is it anyways?
 
 function love.load()
    love.window.setMode(1024,768)
@@ -52,7 +53,8 @@ function love.load()
    goal.f:setRestitution(0.2)                                -- a little bouncy
    goal.f:setUserData("Goal")
    goal.dir="left";
-   goal.scoring=false;
+   goal.scoring=true;
+   goal.servecount=90;
 
    
    -- This is the coordinates where the egg character will be rendered.
@@ -105,16 +107,17 @@ function love.update(dt)
 	 egg.b:setActive(false);
 	 egg.grab=false
       end
-   elseif not egg.b:isActive() and not goal.scoring then
+   elseif not egg.b:isActive() and not goal.scoring  then
       --Release egg.
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();
       --Egg comes from our position.
-      egg.b:setPosition(x,y);
+      egg.b:setPosition(x,y-20);
       --Egg has twice our X velocity, fixed upward velocity.
       egg.b:setLinearVelocity(xv*2,-450);
       egg.b:setActive(true);
       egg.grab=false;
+      goal.scoring=false;
    end
    
    

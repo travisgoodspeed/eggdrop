@@ -9,9 +9,21 @@ function update_penguinsprite()
    penguin.img = penguin.sprite[penguin.dir].idle[1];
 end
 
+
+
 function update_goalsprite()
    if goal.scoring then
       goal.sprite=penguineggsprite
+
+      
+      if goal.servecount>0 then
+	 goal.servecount=goal.servecount-1;
+	 print(goal.servecount);
+      else
+	 --Reserve
+	 serve_egg();
+      end
+      
    else
       goal.sprite=penguinnoeggsprite
    end

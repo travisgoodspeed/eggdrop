@@ -16,9 +16,9 @@ function beginContact(a, b, coll)
    --Score a goal
    if (astr=="Egg" and bstr=="Goal") or (astr=="Goal" and bstr=="Egg") then
       goal.scoring=true;
+      goal.servecount=60;
+      score=score+100;
    end
-
-   
 end
  
 function endContact(a, b, coll)
@@ -31,4 +31,18 @@ end
  
 function postSolve(a, b, coll, normalimpulse, tangentimpulse)
    
+end
+
+
+
+--Serves the egg from the goal.
+function serve_egg()
+   x, y   = goal.b:getPosition();
+   --Egg comes from our position.
+   egg.b:setPosition(x-35,y-20);
+   --Egg has twice our X velocity, fixed upward velocity.
+   egg.b:setLinearVelocity(-800,-450);
+   egg.b:setActive(true);
+   egg.grab=false;
+   goal.scoring=false;
 end
