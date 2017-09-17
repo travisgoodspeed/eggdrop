@@ -18,9 +18,8 @@ function update_goalsprite()
       
       if goal.servecount>0 then
 	 goal.servecount=goal.servecount-1;
-	 print(goal.servecount);
       else
-	 --Reserve
+	 --Serve the egg again.
 	 serve_egg();
       end
       
@@ -53,17 +52,19 @@ function love.draw()
       love.graphics.draw(egg.img, egg.b:getX(), egg.b:getY(), egg.b:getAngle(), 1, 1, 16, 16)
    end
 
+   -- Draw the foreground next.
+   love.graphics.draw(fg.img, 0, 0, 0, 1, 1, 0, 0)
+
    
    if cheats.boundingboxes==1 then
       love.graphics.setColor(0, 0, 0)
       love.graphics.polygon("line", penguin.b:getWorldPoints(penguin.s:getPoints()))
+      love.graphics.polygon("line", goal.b:getWorldPoints(goal.s:getPoints()))
       if egg.b:isActive() then
 	 love.graphics.polygon("line", egg.b:getWorldPoints(egg.s:getPoints()))
       end
    end
 
-   -- Draw the foreground next.
-   love.graphics.draw(fg.img, 0, 0, 0, 1, 1, 0, 0)
 
 
    

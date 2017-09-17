@@ -21,7 +21,7 @@ function beginContact(a, b, coll)
 end
  
 function endContact(a, b, coll)
-   print(a:getUserData().." uncolliding with "..b:getUserData());
+   --print(a:getUserData().." uncolliding with "..b:getUserData());
 end
  
 function preSolve(a, b, coll)
