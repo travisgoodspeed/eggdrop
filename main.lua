@@ -45,13 +45,13 @@ function love.load()
    penguin.dir="left";
 
    -- This is the coordinates where the goal penguin will be rendered.
-   goal.b = love.physics.newBody(world, 50,10, "dynamic")
+   goal.b = love.physics.newBody(world, 800,10, "dynamic")
    goal.b:setMass(1000)                                      -- make it heavy
    goal.s = love.physics.newRectangleShape(48,48)            -- Not quite the full size of the sprite.
    goal.f = love.physics.newFixture(goal.b, goal.s)          -- connect body to shape
    goal.f:setRestitution(0.2)                                -- a little bouncy
    goal.f:setUserData("Goal")
-   goal.dir="right";
+   goal.dir="left";
    goal.scoring=false;
 
    
