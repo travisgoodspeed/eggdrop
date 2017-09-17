@@ -5,7 +5,7 @@ run: graphics
 
 all: graphics
 	rm -rf *.love
-	zip -r eggdrop.love *.lua sprites backgrounds levels music sounds
+	zip -r eggdrop.love *.lua sprites backgrounds levels music/title.mp3 sounds/throw.wav
 
 runzip: all
 	love eggdrop.love
