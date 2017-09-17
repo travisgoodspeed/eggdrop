@@ -45,10 +45,10 @@ function serve_egg()
    x, y   = goal.b:getPosition();
    --Egg comes from goal position, but outside of block.
    if goal.dir=="left" then
-      egg.b:setPosition(x-35,y-20);
+      egg.b:setPosition(x-50,y-20);
       egg.b:setLinearVelocity(-800,-450);
    else
-      egg.b:setPosition(x+35,y-20);
+      egg.b:setPosition(x+50,y-20);
       egg.b:setLinearVelocity(800,-450);
    end
    egg.b:setActive(true);
