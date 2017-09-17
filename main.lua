@@ -95,8 +95,10 @@ function love.update(dt)
       --Release egg.
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();
+      --Egg comes from our position.
       egg.b:setPosition(x,y);
-      egg.b:setLinearVelocity(xv*2,-300);
+      --Egg has twice our X velocity, fixed upward velocity.
+      egg.b:setLinearVelocity(xv*2,-450);
       egg.b:setActive(true);
       egg.grab=false;
    end
