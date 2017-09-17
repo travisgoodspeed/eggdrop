@@ -36,6 +36,9 @@ end
 
 --Serves the egg from the goal.
 function serve_egg()
+   --Disable the goal sign.
+   msg.b:setActive(false);
+   
    --Play the sound.
    sounds.throw:play();
    

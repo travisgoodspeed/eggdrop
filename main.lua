@@ -20,6 +20,7 @@ bg = {} --Level background, not farback.
 fg = {} --Foreground.
 cheats={}
 sounds={}
+msg={}
 score = 0 -- Whose line is it anyways?
 
 function love.load()
@@ -75,6 +76,16 @@ function love.load()
    egg.f:setUserData("Egg")
    egg.img = love.graphics.newImage('sprites/egg/01.png')
 
+
+   -- This is the coordinates where the egg character will be rendered.
+   msg.b = love.physics.newBody(world, 400,20, "dynamic")
+   msg.b:setMass(10)                                        -- make it pretty light
+   msg.s = love.physics.newRectangleShape(128,65)           -- Not quite the full size of the sprite.
+   msg.f = love.physics.newFixture(msg.b, msg.s)            -- connect body to shape
+   msg.f:setRestitution(0.9)                                -- make it very bouncy
+   msg.f:setUserData("Message")
+   msg.img = love.graphics.newImage('text/goal.png')
+
    --Sets the penguin sprites.
    update_penguinsprite();
 end
@@ -114,6 +125,7 @@ function love.update(dt)
    --Scoring a goal
    if goal.scoring then
       egg.b:setActive(false);
+      msg.b:setActive(true);
    end
 
    --Hold shift to grab the egg, release shift to drop the egg.

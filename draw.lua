@@ -22,7 +22,6 @@ function update_goalsprite()
 	 --Serve the egg again.
 	 serve_egg();
       end
-      
    else
       goal.sprite=penguinnoeggsprite
    end
@@ -46,7 +45,10 @@ function love.draw()
    --Draw the penguin and goal.
    love.graphics.draw(penguin.img, penguin.b:getX(), penguin.b:getY(), 0, 1, 1, 32, 32)
    love.graphics.draw(goal.img, goal.b:getX(), goal.b:getY(), 0, 1, 1, 32, 32)
-
+   if msg.b:isActive() then
+      love.graphics.draw(msg.img, msg.b:getX(), msg.b:getY(), msg.b:getAngle(), 1, 1, 64, 32)
+   end
+   
    -- Draw the egg.
    if egg.b:isActive() then
       love.graphics.draw(egg.img, egg.b:getX(), egg.b:getY(), egg.b:getAngle(), 1, 1, 16, 16)
@@ -60,6 +62,7 @@ function love.draw()
       love.graphics.setColor(0, 0, 0)
       love.graphics.polygon("line", penguin.b:getWorldPoints(penguin.s:getPoints()))
       love.graphics.polygon("line", goal.b:getWorldPoints(goal.s:getPoints()))
+      love.graphics.polygon("line", msg.b:getWorldPoints(msg.s:getPoints()))
       if egg.b:isActive() then
 	 love.graphics.polygon("line", egg.b:getWorldPoints(egg.s:getPoints()))
       end
