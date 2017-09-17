@@ -9,7 +9,7 @@ function beginContact(a, b, coll)
    bstr=b:getUserData();
    
    --Capture the egg if shift is held on a collision.
-   if ((astr=="Egg" and bstr=="Penguin") or (astr=="Penguin" and bstr=="Egg")) and love.keyboard.isDown('lshift') then
+   if ((astr=="Egg" and bstr=="Penguin") or (astr=="Penguin" and bstr=="Egg")) and (love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift')) then
       egg.grab=true;
    end
 end

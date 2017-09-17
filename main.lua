@@ -12,8 +12,9 @@ require("sprites")  --Sprite images.
 
 --Global variables
 
-penguin = {}
-egg = {}
+penguin = {} -- Player 1.
+egg = {}     -- The egg.
+goal = {}    -- Receiving penguin.
 farback = {}
 bg = {} --Level background, not farback.
 
@@ -86,7 +87,7 @@ function love.update(dt)
 
 
    --Hold shift to grab the egg, release shift to drop the egg.
-   if love.keyboard.isDown('lshift') then
+   if love.keyboard.isDown('lshift') or love.keyboard.isDown('rshift') then
       if egg.grab then
 	 --Capture egg.
 	 egg.b:setActive(false);
