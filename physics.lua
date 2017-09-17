@@ -2,7 +2,7 @@
 
 function beginContact(a, b, coll)
    x,y = coll:getNormal()
-   print(a:getUserData().." colliding with "..b:getUserData().." with a vector normal of: "..x..", "..y);
+   --print(a:getUserData().." colliding with "..b:getUserData().." with a vector normal of: "..x..", "..y);
 
    astr=a:getUserData();
    bstr=b:getUserData();

@@ -7,7 +7,7 @@ written by Spencer Edgers, Travis Goodspeed, Hannibal Collins, and
 Erik Van Horn.
 
 Pin-Pin the Peguin has an egg that will soon hatch, but he needs to
-keep it warm and get it to a better caretaker than himself.
+keep it warm by passing it to his mate, Pen-Pen.
 
 ## Screenshots
 
