@@ -7,6 +7,7 @@ function init_level()
 
    --Load the background image and create blocks.
    bg.img=love.graphics.newImage('levels/01/bg.png');
+   fg.img=love.graphics.newImage('levels/01/water.png');
    newblock(  0,141,  264,151, "Block");
    newblock(693,176, 1022,185,  "Block");
    newblock(338,247, 535, 255, "Block");

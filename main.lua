@@ -17,7 +17,7 @@ egg = {}     -- The egg.
 goal = {}    -- Receiving penguin.
 farback = {}
 bg = {} --Level background, not farback.
-
+fg = {} --Foreground.
 cheats={}
 
 function love.load()
@@ -44,9 +44,19 @@ function love.load()
    penguin.f:setUserData("Penguin")
    penguin.dir="left";
 
+   -- This is the coordinates where the goal penguin will be rendered.
+   goal.b = love.physics.newBody(world, 50,10, "dynamic")
+   goal.b:setMass(1000)                                      -- make it heavy
+   goal.s = love.physics.newRectangleShape(48,48)            -- Not quite the full size of the sprite.
+   goal.f = love.physics.newFixture(goal.b, goal.s)          -- connect body to shape
+   goal.f:setRestitution(0.2)                                -- a little bouncy
+   goal.f:setUserData("Goal")
+   goal.dir="right";
+   goal.scoring=false;
+
    
    -- This is the coordinates where the egg character will be rendered.
-   egg.b = love.physics.newBody(world, 400,200, "dynamic")  -- set x,y position (400,200) and let it move and hit other objects ("dynamic")
+   egg.b = love.physics.newBody(world, 400,200, "dynamic")
    egg.b:setMass(10)                                        -- make it pretty light
    egg.s = love.physics.newRectangleShape(32,32)            -- Not quite the full size of the sprite.
    egg.f = love.physics.newFixture(egg.b, egg.s)            -- connect body to shape
