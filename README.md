@@ -2,11 +2,40 @@
 
 EggDrop is our working title for quick physics-simulated basketball
 game written at a Philly Game Mechanics Jam on the 16th and 17th of
-September, 2017.
+September, 2017 for the Löve2d game engine, version 0.10.2.
 
 ## Screenshots
 
-[[screenshots/withegg.png]]
+![With Egg](screenshots/withegg.png?raw=true "With Egg")
 
-[[screenshots/noegg.png]]
+![No Egg](screenshots/noegg.png?raw=true "No Egg")
 
+## Building
+
+The game compiles on Linux or OS X by running `make clean all` or
+previews by running `make clean run`.  You will need at least Löve2d
+verison 0.9.0, but we've only tested with 0.10.2.
+
+After compiling, the file `eggdrop.love` is a self-contained game
+bundle that will run with Löve2d on all platforms.
+
+## Controls
+
+```
+W
+A      -- Left
+S
+D      -- Right
+SPACE  -- Jump
+LSHIFT -- Hold to grab the egg.
+```
+
+## Cheat Codes
+
+```
+0. Disable active cheats.
+1. Display bounding boxes of the Penguin and Egg.
+2. Unlimited jump.  (Fly mode.)
+3. Grab the egg.
+4. Release the egg.
+```
