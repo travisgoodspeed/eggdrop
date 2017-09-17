@@ -6,7 +6,7 @@ September, 2017.
 
 ## Screenshots
 
-[[screenshots/withegg.png]]
+![With Egg](screenshots/withegg.png?raw=true "With Egg")
 
-[[screenshots/noegg.png]]
+![No Egg](screenshots/noegg.png?raw=true "No Egg")
 
