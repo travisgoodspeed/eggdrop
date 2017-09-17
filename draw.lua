@@ -6,7 +6,6 @@ function update_penguinsprite()
       penguin.sprite=penguineggsprite
    end
 
-   print("Drawing penguin: "..penguin.dir);
    penguin.img = penguin.sprite[penguin.dir].idle[1];
 end
 
