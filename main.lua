@@ -88,14 +88,16 @@ function love.update(dt)
    --Hold shift to grab the egg, release shift to drop the egg.
    if love.keyboard.isDown('lshift') then
       if egg.grab then
+	 --Capture egg.
 	 egg.b:setActive(false);
 	 egg.grab=false
       end
    elseif not egg.b:isActive() then
+      --Release egg.
       x, y   = penguin.b:getPosition();
       xv, yv = penguin.b:getLinearVelocity();
       egg.b:setPosition(x,y);
-      egg.b:setLinearVelocity(xv,yv);
+      egg.b:setLinearVelocity(xv*2,yv*2);
       egg.b:setActive(true);
       egg.grab=false;
    end
