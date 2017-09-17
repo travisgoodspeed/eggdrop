@@ -11,7 +11,7 @@ function init_level()
    newblock(  0,141,  264,151, "Block");
    newblock(693,176, 1022,185,  "Block");
    newblock(338,247, 535, 255, "Block");
-   newblock(213,247, 338, 423, "Block");
+   newblock(213,415, 338, 423, "Block");
    newblock(508,412, 909, 421, "Block");
    newblock(119,608, 659, 612, "Block");
 end
